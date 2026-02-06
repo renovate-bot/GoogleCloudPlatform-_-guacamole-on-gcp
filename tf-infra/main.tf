@@ -81,28 +81,6 @@ module "project-services" {
   activate_apis = toset(var.required_apis)
 }
 
-resource "google_iap_brand" "project_brand" {
-  depends_on        = [module.project-services]
-  support_email     = data.google_client_openid_userinfo.me.email
-  application_title = "Guacamole on GKE Tutorial"
-  project           = var.project_id
-}
-
-resource "google_iap_client" "project_client" {
-  display_name = "Guacamole IAP Client"
-  brand        = google_iap_brand.project_brand.name
-}
-
-#resource "google_container_registry" "registry" {
-#  depends_on = [module.project-services]
-#}
-
-#resource "google_storage_bucket_iam_member" "gke-read-cloudrepo" {
-#  bucket = google_container_registry.registry.id
-#  role   = "roles/storage.objectViewer"
-#  member = "serviceAccount:${google_service_account.svc-gke-node.email}"
-#}
-
 data "google_compute_default_service_account" "default" {}
 
 data "google_client_openid_userinfo" "me" {}
