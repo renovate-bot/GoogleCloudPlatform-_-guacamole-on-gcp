@@ -90,7 +90,7 @@ data "google_client_config" "provider" {}
 data "google_project" "project" {}
 
 data "external" "wildcard-dns-url" {
-  program = ["./bin/sslip-io-url.sh"]
+  program = ["${path.module}/bin/sslip-io-url.sh"]
 
   query = {
     externalip = google_compute_global_address.guacamole-external.address
