@@ -20,14 +20,6 @@ resource "local_file" "insert-admin-user" {
   filename = "${path.module}/../insert-admin-user.sql"
 }
 
-resource "local_file" "iap-secrets" {
-  content = templatefile("${path.module}/templates/iap-secrets.properties.tmpl", {
-    client_id     = google_iap_client.project_client.client_id
-    client_secret = google_iap_client.project_client.secret
-  })
-  filename = "${path.module}/../client/iap-secrets.properties"
-}
-
 resource "local_file" "guacamole-properties" {
   content = templatefile("${path.module}/templates/guacamole.properties.tmpl", {
     project_id     = var.project_id

@@ -45,11 +45,6 @@ output "external_url" {
   description = "URL used to access Guacamole"
 }
 
-output "oauth_authorized_redirect_url" {
-  value       = "https://iap.googleapis.com/v1/lauth/cliendIds/${google_iap_client.project_client.client_id}:handleRedirect"
-  description = "Universal Redirect URL to be added to OAuth Credentials via Google Cloud Console."
-}
-
 output "db_mgmt_vm" {
   value       = google_compute_instance.db-management.name
   description = "Database Management VM Name"

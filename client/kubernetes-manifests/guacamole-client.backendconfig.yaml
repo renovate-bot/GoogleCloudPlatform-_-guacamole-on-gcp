@@ -28,5 +28,4 @@ spec:
     timeoutSec: 7200
     iap:
         enabled: true
-        oauthclientCredentials:
-            secretName: guacamole-iap-secret
+    
